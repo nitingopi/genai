@@ -52,16 +52,14 @@ class ShoppingList:
         :return: None.
         """
         for id in ids:
-            self.remove_item(id)   
+            self.remove_item(id)  
 
-    def is_valid_product_id(self, id):
+    def is_product_id_valid(self, id):
         """
-        Check if the product id is valid using regex.
-        :param str id: The id of product is unique 9 character string with numbers and upper case letters.
+        Check if the product id is valid.
+        :param str id: The id of product is unique 8 character string with numbers and upper case letters.
         :return: True if the id is valid, False otherwise.
         """
-        pattern = r'^[A-Z0-9]{8}$'
-        return re.match(pattern, id) is not None
-        
+        return bool(re.match(r'^[A-Z0-9]{8}$', id))         
 
-      
+   

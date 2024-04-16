@@ -37,13 +37,12 @@ class ShoppingListTest(unittest.TestCase):
         self.assertEqual(shopping_list.items, [{"id": "9012IJKL", "name": "Bread", "price": 3.00, "quantity": 3}, {"id": "3456MNOP", "name": "Cheese", "price": 4.00, "quantity": 4}])    
     
 
-    def test_is_valid_product_id(self):
+    def test_is_product_id_valid(self):
         shopping_list = ShoppingList()
-        valid_product_ids = ["1234ABCD", "5678EFGH", "9012IJKL", "3456MNOP"]
-        invalid_product_ids = ["a&cd1234", "5(6)78efgh", "90_2ijkl", "345#mnop"] 
-        for product_id in valid_product_ids:
-            self.assertTrue(shopping_list.is_valid_product_id(product_id))
+        list_valid_product_ids = ["1234ABCD", "5678EFGH", "9012IJKL", "3456MNOP"]
+        list_invalid_product_ids = ["1234ABC", "5678EFG", "9012IJK", "3456MNO"]
+        for product_id in list_valid_product_ids:
+            self.assertTrue(shopping_list.is_product_id_valid(product_id))
 
-        for product_id in invalid_product_ids:
-            self.assertFalse(shopping_list.is_valid_product_id(product_id))    
-
+        for product_id in list_invalid_product_ids:
+            self.assertFalse(shopping_list.is_product_id_valid(product_id))

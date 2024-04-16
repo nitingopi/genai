@@ -30,6 +30,19 @@ def test_download_record():
     assert rows[1] == (2, 'Jane Smith', 'janesmith@example.com', 'password456')
     assert rows[2] == (3, 'Bob Johnson', 'bobjohnson@example.com', 'password789')  
 
+
+
+# create test case to insert new record into users table.
+def test_insert_record():
+    conn = connect_to_db()
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", ('Jane Doe', 'janedoe@example.com', 'password456'))
+    conn.commit()
+    conn.close()
+    test_download_record()
+    assert len(rows) == 4
+    assert rows[3] == (4, 'Jane Doe', 'janedoe@example.com', 'password456')    
+
 if __name__ == "__main__":
     create_table()
     # test_download_record()
