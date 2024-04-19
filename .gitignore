@@ -1,3 +1,4 @@
 langchain/.env
 PromptEngineering/.env
 genai_env/
+PromptEngineering/__pycache__/
